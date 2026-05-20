@@ -2,6 +2,27 @@
 """
 Audio Software Companies Scraper - Batch 4
 Uses requests + Claude API for GTM analysis.
+
+----------------------------------------------------------------------
+COST GATE (Jordan Crawford framework §3.10 — third of three places)
+----------------------------------------------------------------------
+Before invoking this script:
+  - Estimate cost yourself against published Anthropic rates.
+    Do NOT ask the model what it costs (framework §1.5).
+  - Confirm system prompts are cached.
+  - Assert the unit (cents vs. dollars).
+
+Gate thresholds:
+  < $100    : log to cost_log.md, proceed
+  $100-1K   : require user 'y' confirmation
+  $1K-10K   : require --i-spent <dollars> CLI flag
+  $10K+     : require second --i-mean-it flag + commit-msg rationale
+
+Other copies of this rule:
+  - ~/CLAUDE.md
+  - ./CLAUDE.md
+See ./docs/framework.md and the cortex-guardrail agent for enforcement.
+----------------------------------------------------------------------
 """
 
 import os
