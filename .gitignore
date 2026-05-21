@@ -1,1 +1,7 @@
 .env
+.claude/settings.local.json
+cost_log.md
+quarantined.csv
+audit_passed_*.md
+audit_failed_*.md
+data_confidence.md

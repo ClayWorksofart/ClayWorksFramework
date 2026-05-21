@@ -8,6 +8,26 @@ Canonical references:
 - **Strategy / build agent:** `.claude/agents/cortex-strategy-build.md`
 - **Guardrail agent:** `.claude/agents/cortex-guardrail.md`
 
+## Cursor / Claude Code IDE extension
+
+This repo is wired for the Claude Code IDE extension (works inside Cursor and VS Code). The extension auto-loads:
+
+- `CLAUDE.md` (this file) into every session
+- `.claude/agents/*.md` as routable sub-agents
+- `.claude/commands/*.md` as `/<name>` slash commands
+- `.claude/settings.json` for permission allowlist (no prompt on common read tools)
+
+**Slash commands** (type `/` in the Claude Code panel):
+
+- `/segment <hypothesis>` — Concentric Circle Test for a Cortex segment
+- `/messaging <segment> | <pillar>` — 3 PQS/PVP variants, pillar-anchored
+- `/mbr <campaign>` — MBR read + pivot decision against Cortex thresholds
+- `/phase0 <data.csv>` — data archaeology, quarantine bad records
+- `/preflight <script> against <N>` — cost-gate audit before paid run
+- `/audit <artifact>` — full ship-readiness audit (critique trio + hold-out + forbidden columns + plausibility)
+
+`settings.local.json` is gitignored — put personal/user-specific overrides there.
+
 ## Agent invocation
 
 Sub-agents are auto-routed by keyword:
