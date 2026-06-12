@@ -1,12 +1,13 @@
-# ClayWorksFramework — Repo CLAUDE.md
+# CortexBlueprint Framework — CLAUDE.md
 
-This repo operationalizes the **Jordan Crawford GTM Engineering Framework** for **Cortex** (cortex.io, Engineering Operations Platform).
+This repo operationalizes the **Jordan Crawford GTM Engineering Framework** for **Cortex** (cortex.io, Engineering Operations Platform) and incorporates behavioral learnings from weekly Claude Code session analysis.
 
 Canonical references:
 - **Framework:** `docs/framework.md` (Cannonball GTM / Blueprint, 2026)
 - **Cortex Message House:** `docs/cortex-message-house.md`
 - **Strategy / build agent:** `.claude/agents/cortex-strategy-build.md`
 - **Guardrail agent:** `.claude/agents/cortex-guardrail.md`
+- **Weekly learning automation:** `automation/` (symlink → `~/.claude-automations/continuous-learning/`)
 
 ## Cursor / Claude Code IDE extension
 
@@ -43,9 +44,13 @@ Sub-agents are auto-routed by keyword:
 | "merge", "join", "link" | `cortex-guardrail` | Identity-linking audit (≥2 keys, fuzzy ≥0.92, 100-record human spot-check) |
 | "cluster", "score", "find pain segment" | `cortex-guardrail` | Forbidden-columns block + 20% hold-out enforcement |
 
-## Repo cost ceilings (the second of the "three places")
+## Behavioral guardrails
 
-This is the repo-level copy of the cost-gate rule (Framework §3.10). The other two places: `~/CLAUDE.md` (your home), and the header docstring of each `scrape_*.py`.
+**Human checkpoint — outbound and live systems.** Never send a message, trigger a CRM write, fire a deployed automation, or mutate a live Cortex build without explicit user confirmation in the current session. Existing git-branch/merge rules apply; this extends them to Slack sends, Salesforce writes, and any running pipeline. The cost of one unconfirmed outbound is a damaged client relationship.
+
+**Do not confirm completion you cannot verify.** If a UI change or integration cannot be tested in the current environment, say so explicitly. Do not claim success from passing type checks or unit tests alone.
+
+## Cost ceilings
 
 | Estimated spend | Required action |
 | --- | --- |
@@ -58,6 +63,8 @@ This is the repo-level copy of the cost-gate rule (Framework §3.10). The other 
 - Compute cost yourself against published Anthropic rates (Framework §1.5 — Claude can't tell you what Claude costs).
 - Cache system prompts (~10% on repeats; uncached swarms pay 10× over).
 - Assert the unit (cents vs. dollars) on every cost report. The $256,409 → $2,564 cents-as-dollars bug is the canonical lesson.
+
+This rule also lives in `~/CLAUDE.md` (home) and in the header docstring of each `scrape_*.py` — all three places must agree.
 
 ## Cortex stance (loaded into every session)
 
