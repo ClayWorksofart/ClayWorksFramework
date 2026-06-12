@@ -48,7 +48,7 @@ Sub-agents are auto-routed by keyword:
 
 **Human checkpoint — outbound and live systems.** Never send a message, trigger a CRM write, fire a deployed automation, or mutate a live Cortex build without explicit user confirmation in the current session. Existing git-branch/merge rules apply; this extends them to Slack sends, Salesforce writes, and any running pipeline. The cost of one unconfirmed outbound is a damaged client relationship.
 
-**Do not confirm completion you cannot verify.** If a UI change or integration cannot be tested in the current environment, say so explicitly. Do not claim success from passing type checks or unit tests alone.
+**Do not confirm completion you cannot verify.** If a UI change or integration cannot be tested in the current environment, say so explicitly. Do not claim success from passing type checks or unit tests alone. For a scheduled or deployed automation, "working" means it fired and delivered: cite a last-run timestamp or delivery receipt, not a cron entry, a green deploy, or a config that looks right.
 
 ## Cost ceilings
 
@@ -112,7 +112,5 @@ Block before any clustering / segmentation: `headcount`, `employees`, `revenue`,
 
 - Single-key joins (always ≥2 keys, fuzzy ≥0.92).
 - Email joins without stripping `cortex.io` and the customer's own domain first.
-- Running any paid-API script without the cost-gate flag for `$1K+` estimates.
-- Trusting LLM self-reported cost math.
 - Skipping the 20% hold-out on hypothesis-generating pipelines.
 - Relaxing a discipline threshold to make a build pass (Framework §3.12 — fix the bug, don't unfix the discipline).
